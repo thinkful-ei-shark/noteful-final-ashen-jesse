@@ -13,7 +13,7 @@ class AddNote extends React.Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("this is working");
-    this.context.addNote(this.state.note).then(() => {
+    this.context.addNote(this.state.name, this.state.content).then(() => {
       this.props.history.push("/");
     });
   };

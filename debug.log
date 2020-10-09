@@ -2,3 +2,5 @@
 [1008/113517.208:ERROR:crash_report_database_win.cc(428)] unexpected header
 [1008/113517.296:ERROR:file_io.cc(90)] ReadExactly: expected 36, observed 0
 [1008/113901.840:ERROR:crash_report_database_win.cc(428)] unexpected header
+[1009/140638.099:ERROR:crash_report_database_win.cc(457)] unexpected header
+[1009/140739.460:ERROR:crash_report_database_win.cc(457)] unexpected header
