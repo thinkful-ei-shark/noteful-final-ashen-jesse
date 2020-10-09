@@ -42,3 +42,4 @@ class AddNote extends React.Component {
     );
   }
 }
+export default AddNote;
