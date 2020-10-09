@@ -9,6 +9,7 @@ import ApiContext from "../ApiContext";
 import config from "../config";
 import "./App.css";
 import AddFolder from "../AddFolder.js";
+import AddNote from "../AddNote.js";
 
 class App extends Component {
   state = {
@@ -64,6 +65,27 @@ class App extends Component {
       });
   };
 
+  addNotes = (name, text) => {
+    return fetch(`${config.API_ENDPOINT}/notes`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+      }),
+    })
+      .then((notesRes) => {
+        if (!notesRes.ok) return notesRes.json().then((e) => Promise.reject(e));
+
+        return notesRes.json();
+      })
+      .then((note) => {
+        this.setState({ notes: [...this.state.notes, note] });
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
+
   renderNavRoutes() {
     return (
       <>
@@ -92,6 +114,7 @@ class App extends Component {
   render() {
     const value = {
       addFolder: this.addFolder,
+      addNote: this.addNotes,
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.handleDeleteNote,
