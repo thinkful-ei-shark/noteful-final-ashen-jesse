@@ -65,7 +65,7 @@ class App extends Component {
       });
   };
 
-  addNotes = (name, text) => {
+  addNote = (name, text) => {
     return fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -114,7 +114,7 @@ class App extends Component {
   render() {
     const value = {
       addFolder: this.addFolder,
-      addNote: this.addNotes,
+      addNote: this.addNote,
       notes: this.state.notes,
       folders: this.state.folders,
       deleteNote: this.handleDeleteNote,
