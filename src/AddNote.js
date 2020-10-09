@@ -1,22 +1,39 @@
 import React from "react";
 import ApiContext from "./ApiContext.js";
+import {getNotesForFolder} from './notes-helpers'
 
 class AddNote extends React.Component {
   static contextType = ApiContext;
-  state = { name: "", content: "" };
+
+  state = { 
+    name: "",
+    content: "", 
+  };
+
   handleName = (evt) => {
     this.setState({ name: evt.currentTarget.value });
   };
+
   handleContent = (evt) => {
     this.setState({ content: evt.currentTarget.value });
   };
+
+  handleFolderChoice = (evt) => {
+    this.setState({ folderChoice: evt.curre})
+  }
+
   handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("this is working");
+    console.log(`/folder/${this.context.folders.name}`)
     this.context.addNote(this.state.name, this.state.content).then(() => {
       this.props.history.push("/");
+      if (this.state.name === this.context.folders.name){
+        return this.props.history.push(`/folder/${this.context.folders.name}`)
+      }
     });
   };
+
   render() {
     console.log(this.state, "this is working");
     return (
@@ -38,7 +55,7 @@ class AddNote extends React.Component {
             return <option value={folder.name}>{folder.name}</option>;
           })}
         </select>
-        <button>Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     );
   }
