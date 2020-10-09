@@ -1,13 +1,13 @@
 import React from "react";
 import ApiContext from "./ApiContext.js";
-import {getNotesForFolder} from './notes-helpers'
 
 class AddNote extends React.Component {
   static contextType = ApiContext;
 
-  state = { 
+  state = {
     name: "",
-    content: "", 
+    content: "",
+    folderId: "",
   };
 
   handleName = (evt) => {
@@ -19,19 +19,16 @@ class AddNote extends React.Component {
   };
 
   handleFolderChoice = (evt) => {
-    this.setState({ folderChoice: evt.curre})
-  }
+    this.setState({ folderId: evt.currentTarget.value });
+  };
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("this is working");
-    console.log(`/folder/${this.context.folders.name}`)
-    this.context.addNote(this.state.name, this.state.content).then(() => {
-      this.props.history.push("/");
-      if (this.state.name === this.context.folders.name){
-        return this.props.history.push(`/folder/${this.context.folders.name}`)
-      }
-    });
+    this.context
+      .addNote(this.state.name, this.state.content, this.state.folderId)
+      .then(() => {
+        this.props.history.push("/");
+      });
   };
 
   render() {
@@ -43,19 +40,22 @@ class AddNote extends React.Component {
           placeholder="Name"
           value={this.state.name}
           onChange={this.handleName}
+          required
         />
         <input
           type="textArea"
           placeholder="Content"
           value={this.state.content}
           onChange={this.handleContent}
+          required
         />
-        <select>
+        <select onChange={this.handleFolderChoice} required>
+          <option value="...">...</option>
           {this.context.folders.map((folder) => {
-            return <option value={folder.name}>{folder.name}</option>;
+            return <option value={folder.id}>{folder.name}</option>;
           })}
         </select>
-        <button type='submit'>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     );
   }
