@@ -22,8 +22,8 @@ class AddFolder extends React.Component {
           placeholder="folder name here"
           value={this.state.name}
           onChange={this.handleNameChange}
-        ></input>
-        <button>submit</button>
+        />
+        <button>Submit</button>
       </form>
     );
   }

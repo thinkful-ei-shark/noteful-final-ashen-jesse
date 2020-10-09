@@ -3,40 +3,42 @@ import ApiContext from "./ApiContext.js";
 
 class AddNote extends React.Component {
   static contextType = ApiContext;
-  state = { note: "", text: "" };
-  handleNote = (evt) => {
-    this.setState({ note: evt.currentTarget.value });
+  state = { name: "", content: "" };
+  handleName = (evt) => {
+    this.setState({ name: evt.currentTarget.value });
   };
-  handleText = (evt) => {
-    this.setState({ text: evt.currentTarget.value });
+  handleContent = (evt) => {
+    this.setState({ content: evt.currentTarget.value });
   };
   handleSubmit = (evt) => {
     evt.preventDefault();
-    this.context.addNote(this.state.notes).then(() => {
+    console.log("this is working");
+    this.context.addNote(this.state.note).then(() => {
       this.props.history.push("/");
     });
   };
   render() {
-    console.log(this.state);
+    console.log(this.state, "this is working");
     return (
       <form className="add-note" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Name of note"
-          value={this.state.note}
-          onChange={this.handleNote}
+          placeholder="Name"
+          value={this.state.name}
+          onChange={this.handleName}
         />
         <input
           type="textArea"
-          placeholder="Description"
-          value={this.state.text}
-          onChange={this.handleText}
+          placeholder="Content"
+          value={this.state.content}
+          onChange={this.handleContent}
         />
         <select>
           {this.context.folders.map((folder) => {
             return <option value={folder.name}>{folder.name}</option>;
           })}
         </select>
+        <button>Submit</button>
       </form>
     );
   }

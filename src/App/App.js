@@ -65,12 +65,14 @@ class App extends Component {
       });
   };
 
-  addNote = (name, text) => {
+  addNote = (name, content) => {
+    console.log(name, content);
     return fetch(`${config.API_ENDPOINT}/notes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         name,
+        content,
       }),
     })
       .then((notesRes) => {
