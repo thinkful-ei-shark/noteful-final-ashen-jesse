@@ -12,18 +12,19 @@ class AddNote extends React.Component {
   };
   handleSubmit = (evt) => {
     evt.preventDefault();
-    this.context.addNote(this.state.name).then(() => {
+    this.context.addNote(this.state.notes).then(() => {
       this.props.history.push("/");
     });
   };
   render() {
+    console.log(this.state);
     return (
       <form className="add-note" onSubmit={this.handleSubmit}>
         <input
           type="text"
           placeholder="Name of note"
           value={this.state.note}
-          onchange={this.handleNote}
+          onChange={this.handleNote}
         />
         <input
           type="textArea"
