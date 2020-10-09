@@ -17,8 +17,6 @@ class AddNote extends React.Component {
     });
   };
   render() {
-    //create array of option tags parallelling array of folders
-    //map function through the folders
     return (
       <form className="add-note" onSubmit={this.handleSubmit}>
         <input
