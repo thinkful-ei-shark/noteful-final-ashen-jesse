@@ -56,6 +56,7 @@ class AddNote extends React.Component {
           required
         />
         <select onChange={this.handleFolderChoice} required>
+          <option value="">Please Select</option>
           {this.context.folders.map((folder) => {
             return <option value={folder.id}>{folder.name}</option>;
           })}
