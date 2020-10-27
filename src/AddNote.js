@@ -30,6 +30,12 @@ class AddNote extends React.Component {
         this.props.history.push("/");
       });
   };
+  validateName = () => {
+    const name = this.state.name.value.trim();
+    if (!name)
+        return 'Name cannot be empty.'
+    return;
+}
 
   render() {
     console.log(this.state, "this is working");
@@ -50,7 +56,6 @@ class AddNote extends React.Component {
           required
         />
         <select onChange={this.handleFolderChoice} required>
-          <option value="...">...</option>
           {this.context.folders.map((folder) => {
             return <option value={folder.id}>{folder.name}</option>;
           })}
