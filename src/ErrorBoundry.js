@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-class ErrorBoundary extends React.Component {
+class ErrorBoundry extends React.Component {
   static defaultProps = {
     item: ''
   }
@@ -20,8 +20,8 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-ErrorBoundary.propTypes = {
+ErrorBoundry.propTypes = {
   item: PropTypes.string
 }
 
-export default ErrorBoundary;
+export default ErrorBoundry;

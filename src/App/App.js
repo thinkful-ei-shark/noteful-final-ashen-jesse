@@ -10,6 +10,7 @@ import config from "../config";
 import "./App.css";
 import AddFolder from "../AddFolder.js";
 import AddNote from "../AddNote.js";
+import ErrorBoundry from '../ErrorBoundry.js';
 
 class App extends Component {
   state = {
@@ -101,17 +102,16 @@ class App extends Component {
       </>
     );
   }
-
+//wraped main routes in error boundry
   renderMainRoutes() {
     return (
-      <>
+      <ErrorBoundry>
         {["/", "/folder/:folderId"].map((path) => (
           <Route exact key={path} path={path} component={NoteListMain} />
         ))}
         <Route path="/note/:noteId" component={NotePageMain} />
-        <Route path="/add-folder" component={AddFolder} />
         <Route path="/add-note" component={AddNote} />
-      </>
+      </ErrorBoundry>
     );
   }
 
