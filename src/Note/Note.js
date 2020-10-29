@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Link } from "react-router-dom";
-import { format } from "date-fns";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ApiContext from "../ApiContext";
-import config from "../config";
-import "./Note.css";
-
-=======
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
@@ -15,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import './Note.css';
->>>>>>> d89005a9182c2fde3c4b3e4b3e1f385a2411b5de
+import PropTypes from 'prop-types'
 
 export default class Note extends React.Component {
   static defaultProps = {
