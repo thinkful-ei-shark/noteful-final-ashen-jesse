@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
@@ -5,7 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ApiContext from "../ApiContext";
 import config from "../config";
 import "./Note.css";
-import PropTypes from 'prop-types'
+
+=======
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import './Note.css';
+>>>>>>> d89005a9182c2fde3c4b3e4b3e1f385a2411b5de
 
 export default class Note extends React.Component {
   static defaultProps = {
@@ -23,9 +33,9 @@ export default class Note extends React.Component {
     const noteId = this.props.id;
 
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     })
       .then((res) => {
@@ -58,8 +68,8 @@ export default class Note extends React.Component {
         </button>
         <div className="Note__dates">
           <div className="Note__dates-modified">
-            Modified{" "}
-            <span className="Date">{format(modified, "Do MMM YYYY")}</span>
+            Modified{' '}
+            <span className="Date">{format(modified, 'DD MM YYYY')}</span>
           </div>
         </div>
       </div>
